@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PeptideEmails — 7-Figure Email Flows the FDA Won't Question</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f7f7f5;
+    --dark: #0a0a0a;
+    --text: #111111;
+    --text-mid: #333333;
+    --text-light: #666666;
+    --border: #e0e0e0;
+    --border-dark: #cccccc;
+    --accent-green: #22c55e;
+    --accent-green-bg: rgba(34,197,94,0.08);
+    --accent-red: #dc2626;
+    --accent-red-bg: rgba(220,38,38,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.3rem; font-weight: 900; color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--accent-green); }
+  .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+  .nav-links a {
+    font-size: 0.9rem; font-weight: 600; color: var(--text-mid);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    font-size: 0.85rem; font-weight: 700; padding: 0.75rem 1.75rem;
+    background: var(--dark); color: #fff; text-decoration: none;
+    border: 2px solid var(--dark); transition: all 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent-green); border-color: var(--accent-green); }
+
+  /* ---- HERO ---- */
+  .hero {
+    padding: 10rem 3rem 5rem;
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.95rem; font-weight: 700; color: var(--text-light);
+    margin-bottom: 1.5rem; letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow .line { width: 2.5rem; height: 3px; background: var(--accent-green); }
+  h1 {
+    font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+    font-weight: 900; line-height: 1.05; letter-spacing: -0.04em;
+    margin-bottom: 1.75rem;
+  }
+  h1 .green { color: var(--accent-green); }
+  .hero-sub {
+    font-size: 1.15rem; line-height: 1.7; color: var(--text-mid);
+    max-width: 480px; margin-bottom: 2.5rem; font-weight: 500;
+  }
+  .hero-sub strong { color: var(--text); font-weight: 700; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .btn-dark {
+    font-size: 0.9rem; font-weight: 700; padding: 1rem 2.25rem;
+    background: var(--dark); color: #fff; text-decoration: none;
+    border: 2px solid var(--dark); transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-dark:hover { background: var(--accent-green); border-color: var(--accent-green); }
+  .btn-dark .arrow { font-size: 1.2rem; }
+  .btn-outline {
+    font-size: 0.9rem; font-weight: 700; padding: 1rem 2.25rem;
+    background: transparent; color: var(--text); text-decoration: none;
+    border: 2px solid var(--border-dark); transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--text); }
+
+  .qualifier {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.85rem 1.25rem; border-left: 4px solid var(--accent-green);
+    background: var(--accent-green-bg);
+  }
+  .qualifier-text {
+    font-size: 0.9rem; font-weight: 600; color: var(--text-mid);
+  }
+  .qualifier-text strong { color: var(--text); font-weight: 800; }
+
+  .hero-stats {
+    display: flex; flex-direction: column; gap: 2.5rem;
+    padding-left: 3rem; border-left: 3px solid var(--border);
+  }
+  .hero-stat-number {
+    font-size: 3.5rem; font-weight: 900; line-height: 1;
+    letter-spacing: -0.03em; margin-bottom: 0.25rem;
+  }
+  .hero-stat-number.green { color: var(--accent-green); }
+  .hero-stat-number.red { color: var(--accent-red); }
+  .hero-stat-label {
+    font-size: 0.95rem; font-weight: 600; color: var(--text-light);
+  }
+
+  .divider { height: 1px; background: var(--border); }
+  .divider-thick { height: 3px; background: var(--dark); }
+
+  /* ---- MARQUEE ---- */
+  .marquee-wrap {
+    overflow: hidden; padding: 1.25rem 0;
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    background: var(--bg-alt);
+  }
+  .marquee {
+    display: flex; gap: 3rem;
+    animation: scroll 25s linear infinite; width: max-content;
+  }
+  .marquee span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em;
+    color: var(--text-mid); text-transform: uppercase; white-space: nowrap;
+  }
+  .marquee .sep { color: var(--border-dark); }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ---- DARK SECTION ---- */
+  .dark-section {
+    background: var(--dark); color: #fff;
+    padding: 6rem 3rem; position: relative;
+  }
+  .dark-inner { max-width: 1100px; margin: 0 auto; }
+  .dark-section .section-label { color: rgba(255,255,255,0.35); }
+  .dark-section h2 { color: #fff; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-light); margin-bottom: 1.25rem;
+  }
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900; line-height: 1.1; letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .manifesto {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    max-width: 900px;
+    margin-bottom: 2rem;
+  }
+
+  .manifesto-sub {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--accent-green);
+    max-width: 750px;
+    margin-bottom: 3.5rem;
+  }
+
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    margin-top: 3rem; border: 1px solid rgba(255,255,255,0.1);
+  }
+  .problem-card {
+    padding: 2.5rem; border: 1px solid rgba(255,255,255,0.1);
+  }
+  .problem-card:hover { background: rgba(255,255,255,0.03); }
+  .problem-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; font-weight: 700; color: var(--accent-red);
+    margin-bottom: 1rem; letter-spacing: 0.05em;
+  }
+  .problem-card h3 {
+    font-size: 1.25rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.6rem;
+  }
+  .problem-card p {
+    font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.55; font-weight: 600;
+  }
+
+  /* ---- LIGHT SECTION ---- */
+  .light-section {
+    padding: 6rem 3rem; background: var(--bg);
+  }
+  .light-inner { max-width: 1100px; margin: 0 auto; }
+  .section-text {
+    font-size: 1.1rem; line-height: 1.7; color: var(--text-mid);
+    max-width: 520px; font-weight: 500;
+  }
+
+  .flow-list {
+    margin-top: 3rem; border-top: 3px solid var(--dark);
+  }
+  .flow-item {
+    display: grid; grid-template-columns: 4rem 1fr auto;
+    align-items: center; gap: 1.5rem;
+    padding: 1.75rem 0; border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .flow-item:hover { background: var(--bg-alt); padding-left: 1rem; padding-right: 1rem; }
+  .flow-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem; font-weight: 700; color: var(--text-light);
+  }
+  .flow-name { font-size: 1.15rem; font-weight: 700; }
+  .flow-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em;
+    padding: 0.3rem 0.6rem;
+  }
+  .flow-tag.revenue { color: var(--accent-green); background: var(--accent-green-bg); }
+  .flow-tag.retention { color: var(--text-light); background: rgba(0,0,0,0.04); }
+
+  .alt-section { padding: 6rem 3rem; background: var(--bg-alt); }
+  .alt-inner { max-width: 1100px; margin: 0 auto; }
+
+  .audience-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    margin-top: 3rem; border: 2px solid var(--dark);
+  }
+  .audience-card {
+    padding: 3rem; border-right: 2px solid var(--dark);
+  }
+  .audience-card:last-child { border-right: none; }
+  .audience-card:hover { background: var(--bg); }
+  .audience-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+  }
+  .audience-tag.labs { color: var(--accent-red); }
+  .audience-tag.creators { color: var(--accent-green); }
+  .audience-card h3 {
+    font-size: 1.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.85rem;
+  }
+  .audience-card p {
+    font-size: 1rem; color: var(--text-mid); line-height: 1.6;
+    font-weight: 600; margin-bottom: 1.5rem;
+  }
+  .aud-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .aud-list li {
+    font-size: 0.95rem; color: var(--text-mid); font-weight: 600;
+    padding-left: 1.25rem; position: relative; line-height: 1.45;
+  }
+  .aud-list li::before {
+    content: '\2192'; position: absolute; left: 0; color: var(--accent-green);
+    font-weight: 800;
+  }
+
+  .comp-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
+    margin-top: 3rem; border: 2px solid var(--dark);
+  }
+  .comp-card {
+    padding: 2.25rem; border-right: 2px solid var(--dark);
+    border-bottom: 2px solid var(--dark);
+  }
+  .comp-card:nth-child(3) { border-right: none; }
+  .comp-card:nth-child(6) { border-right: none; }
+  .comp-card:nth-child(n+4) { border-bottom: none; }
+  .comp-card:hover { background: var(--bg-alt); }
+  .comp-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .comp-card p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.5; font-weight: 600; }
+
+  .big-callout {
+    padding: 5rem 3rem; text-align: center;
+    border-top: 3px solid var(--dark); border-bottom: 3px solid var(--dark);
+  }
+  .big-callout-inner { max-width: 700px; margin: 0 auto; }
+  .big-callout .big-num {
+    font-size: clamp(4rem, 10vw, 8rem); font-weight: 900;
+    line-height: 1; letter-spacing: -0.04em; color: var(--accent-green);
+    margin-bottom: 0.5rem;
+  }
+  .big-callout .big-label {
+    font-size: 1.25rem; font-weight: 700; color: var(--text-mid);
+    margin-bottom: 2rem;
+  }
+  .big-callout p {
+    font-size: 1.05rem; color: var(--text-light); line-height: 1.65; font-weight: 500;
+    max-width: 500px; margin: 0 auto 2rem;
+  }
+
+  .final-cta {
+    padding: 7rem 3rem; background: var(--dark); color: #fff; text-align: center;
+  }
+  .final-cta .section-label { color: rgba(255,255,255,0.35); }
+  .final-cta h2 { color: #fff; margin-bottom: 1rem; }
+  .final-cta p {
+    font-size: 1.1rem; color: rgba(255,255,255,0.6); font-weight: 500;
+    max-width: 440px; margin: 0 auto 2.5rem; line-height: 1.6;
+  }
+  .final-cta .btn-green {
+    font-size: 0.95rem; font-weight: 700; padding: 1.15rem 2.75rem;
+    background: var(--accent-green); color: var(--dark); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    transition: all 0.2s;
+  }
+  .final-cta .btn-green:hover { background: #fff; }
+  .final-cta .btn-green .arrow { font-size: 1.3rem; }
+
+  footer {
+    padding: 2rem 3rem; text-align: center;
+    font-size: 0.8rem; font-weight: 600; color: var(--text-light);
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 800px) {
+    .hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 3rem; gap: 2rem; }
+    .hero-stats { padding-left: 0; border-left: none; border-top: 3px solid var(--border);
+      padding-top: 2rem; flex-direction: row; flex-wrap: wrap; gap: 2rem; }
+    .problem-grid, .audience-grid, .flow-grid { grid-template-columns: 1fr; }
+    .comp-grid { grid-template-columns: 1fr; }
+    .comp-card { border-right: none !important; border-bottom: 2px solid var(--dark) !important; }
+    .comp-card:last-child { border-bottom: none !important; }
+    .audience-card { border-right: none; border-bottom: 2px solid var(--dark); }
+    .audience-card:last-child { border-bottom: none; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .dark-section, .light-section, .alt-section { padding: 4rem 1.5rem; }
+    .big-callout { padding: 3.5rem 1.5rem; }
+    .final-cta { padding: 5rem 1.5rem; }
+    .flow-item { grid-template-columns: 2.5rem 1fr; }
+    .flow-tag { display: none; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero .hero-eyebrow { animation: fadeUp 0.5s ease both; }
+  .hero h1 { animation: fadeUp 0.5s ease 0.08s both; }
+  .hero .hero-sub { animation: fadeUp 0.5s ease 0.16s both; }
+  .hero .hero-ctas { animation: fadeUp 0.5s ease 0.24s both; }
+  .hero .qualifier { animation: fadeUp 0.5s ease 0.32s both; }
+  .hero-stats { animation: fadeUp 0.6s ease 0.3s both; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Peptide<span>Emails</span></div>
+  <div class="nav-links">
+    <a href="#problem">Problem</a>
+    <a href="#how">Process</a>
+    <a href="#who">Clients</a>
+    <a href="#cta" class="nav-cta">Schedule Consultation</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="line"></span> For Peptide & GLP-1 Brands
+    </div>
+    <h1>7-Figure Email Flows the FDA Won't Question. <span class="green">&rarr;</span></h1>
+    <p class="hero-sub">
+      Thousands of website visits generating nothing. Customers who bought once and forgot you exist. One bad subject line could trigger a warning letter. <strong>We build compliant, done-for-you email systems</strong> that turn your list into predictable revenue &mdash; with no additional ad spend.
+    </p>
+    <div class="hero-ctas">
+      <a href="#cta" class="btn-dark">See If You Qualify <span class="arrow">&rarr;</span></a>
+      <a href="#how" class="btn-outline">See How It Works</a>
+    </div>
+    <div class="qualifier">
+      <div class="qualifier-text">Limited availability &mdash; <strong>peptide brands doing $50K+/mo</strong> with an existing email list</div>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-number red">30</div>
+      <div class="hero-stat-label">FDA Warning Letters &mdash; March 2026</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-number">$0</div>
+      <div class="hero-stat-label">Revenue From Emails You Never Send</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-number green">72%</div>
+      <div class="hero-stat-label">Customers Who Buy Once & Never Return</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>FDA Compliant Copy</span><span class="sep">|</span>
+    <span>Sendlane Infrastructure</span><span class="sep">|</span>
+    <span>Isolated Subdomains</span><span class="sep">|</span>
+    <span>DKIM / SPF / DMARC</span><span class="sep">|</span>
+    <span>Done For You</span><span class="sep">|</span>
+    <span>Voice-Matched Writing</span><span class="sep">|</span>
+    <span>High-Risk Deliverability</span><span class="sep">|</span>
+    <span>Automated Sequences</span><span class="sep">|</span>
+    <span>Retention Engineering</span><span class="sep">|</span>
+    <span>FDA Compliant Copy</span><span class="sep">|</span>
+    <span>Sendlane Infrastructure</span><span class="sep">|</span>
+    <span>Isolated Subdomains</span><span class="sep">|</span>
+    <span>DKIM / SPF / DMARC</span><span class="sep">|</span>
+    <span>Done For You</span><span class="sep">|</span>
+    <span>Voice-Matched Writing</span><span class="sep">|</span>
+    <span>High-Risk Deliverability</span><span class="sep">|</span>
+    <span>Automated Sequences</span><span class="sep">|</span>
+    <span>Retention Engineering</span><span class="sep">|</span>
+  </div>
+</div>
+
+<section class="dark-section" id="problem">
+  <div class="dark-inner">
+    <div class="manifesto">You could make a lot more money for your business through email marketing if you don't cut corners or cross the FDA. Email drives enormous revenue for peptide brands and when you <span style="color: var(--accent-green);">lean into compliant language</span> &mdash; it supercharges your business. Most peptide brands either do nothing out of fear or get greedy and market claims that lead to regulator crackdown.</div>
+    <div class="manifesto-sub">We write the emails your customers actually open &mdash; compliant copy wrapped in design that looks like it belongs in their feed, driving conversions.</div>
+    <div class="section-label" style="margin-top: 4rem;">The Problem</div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-num">01</div>
+        <h3>One bad email. Merchant account frozen.</h3>
+        <p>One disease claim and you lose your payment processor overnight.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">02</div>
+        <h3>2 blasts a month isn't a strategy.</h3>
+        <p>No sequences. No automations. Thousands in revenue disappearing weekly.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">03</div>
+        <h3>Instagram disappears. Then what?</h3>
+        <p>One shadow ban. 40% of your revenue gone. Email is the only channel you own.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">04</div>
+        <h3>You sell once. You should sell six times.</h3>
+        <p>Reorder cycles run every 4&ndash;8 weeks. Most customers never come back.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="big-callout">
+  <div class="big-callout-inner">
+    <div class="big-num">35%</div>
+    <div class="big-label">Of E-Commerce Revenue Is Attributed To Email</div>
+    <a href="#cta" class="btn-dark">Schedule Consultation <span class="arrow">&rarr;</span></a>
+  </div>
+</div>
+
+<section class="light-section" id="how">
+  <div class="light-inner">
+    <div class="section-label">What We Build</div>
+    <h2>Automated flows that sell<br>while you sleep.</h2>
+    <p class="section-text">Every email in your voice, reviewed for FDA compliance, engineered to drive revenue.</p>
+
+    <div class="flow-list">
+      <div class="flow-item">
+        <span class="flow-num">01</span>
+        <span class="flow-name">Welcome &rarr; First Purchase Sequence</span>
+        <span class="flow-tag revenue">REVENUE</span>
+      </div>
+      <div class="flow-item">
+        <span class="flow-num">02</span>
+        <span class="flow-name">Education Series</span>
+        <span class="flow-tag retention">RETENTION</span>
+      </div>
+      <div class="flow-item">
+        <span class="flow-num">03</span>
+        <span class="flow-name">Restock & Reorder Triggers</span>
+        <span class="flow-tag revenue">REVENUE</span>
+      </div>
+      <div class="flow-item">
+        <span class="flow-num">04</span>
+        <span class="flow-name">Product Launch Campaigns</span>
+        <span class="flow-tag revenue">REVENUE</span>
+      </div>
+      <div class="flow-item">
+        <span class="flow-num">05</span>
+        <span class="flow-name">Win-Back & Re-engagement</span>
+        <span class="flow-tag retention">RETENTION</span>
+      </div>
+      <div class="flow-item">
+        <span class="flow-num">06</span>
+        <span class="flow-name">Weekly Campaigns & Promos</span>
+        <span class="flow-tag revenue">REVENUE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt-section" id="who">
+  <div class="alt-inner">
+    <div class="section-label">Who We Work With</div>
+    <h2>Two client types.<br>One compliance standard.</h2>
+
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-tag labs">LABS & PHARMACIES</div>
+        <h3>Compounding pharmacies & research labs.</h3>
+        <p>Build trust, demonstrate quality, drive reorders &mdash; without crossing compliance lines.</p>
+        <ul class="aud-list">
+          <li>B2B emails to telehealth partners</li>
+          <li>D2C restock and reorder flows</li>
+          <li>COA-driven trust sequences</li>
+          <li>21 CFR 201.128 guidance</li>
+          <li>You review every email before it's sent</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="audience-tag creators">CREATORS & BRANDS</div>
+        <h3>Influencers with peptide or GLP-1 lines.</h3>
+        <p>Emails that sound like you &mdash; your voice, compliant copy, real conversions.</p>
+        <ul class="aud-list">
+          <li>Voice-matched copy from your content</li>
+          <li>Personal narrative, not product claims</li>
+          <li>Launch sequences that convert</li>
+          <li>Compliant language that still sells</li>
+          <li>You review every email before it's sent</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="light-section">
+  <div class="light-inner">
+    <div class="section-label">Infrastructure</div>
+    <h2>Built for brands other<br>agencies won't touch.</h2>
+
+    <div class="comp-grid">
+      <div class="comp-card">
+        <h3>Sendlane Only</h3>
+        <p>Built for high-risk e-commerce. Klaviyo will shut you down.</p>
+      </div>
+      <div class="comp-card">
+        <h3>Isolated Subdomains</h3>
+        <p>Dedicated sending domain. Primary domain stays clean.</p>
+      </div>
+      <div class="comp-card">
+        <h3>Full Authentication</h3>
+        <p>SPF, DKIM, DMARC. Non-negotiable for 2026.</p>
+      </div>
+      <div class="comp-card">
+        <h3>Compliance Review</h3>
+        <p>Every email passes our FDA framework before it sends.</p>
+      </div>
+      <div class="comp-card">
+        <h3>Research-Only Language</h3>
+        <p>No dosage guidance. No consumption testimonials.</p>
+      </div>
+      <div class="comp-card">
+        <h3>Audit-Ready Archive</h3>
+        <p>Full documentation. If regulators knock, you're covered.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="cta">
+  <div class="section-label">Get Started</div>
+  <h2>Your list is either making<br>you money or it isn't.</h2>
+  <p>15-minute discovery call. We'll show you where revenue is leaking and tell you if we're a fit.</p>
+  <a href="https://calendly.com" class="btn-green">Schedule My Free Consultation <span class="arrow">&rarr;</span></a>
+</section>
+
+<footer>
+  PeptideEmails.com &mdash; All email systems built within FDA compliance guidelines.
+</footer>
+
+</body>
+</html>
