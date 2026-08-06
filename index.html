@@ -383,7 +383,19 @@
     .flow-tag { display: none; }
   }
 
-  .example-email-btn { margin-top: 2.5rem; }
+  .example-email-btn {
+    margin-top: 2.5rem;
+    display: flex; width: 100%;
+    justify-content: center; text-align: center;
+    padding: 1.5rem 2rem; font-size: 1.05rem;
+    background: var(--accent-red); border-color: var(--accent-red); color: #fff;
+    box-shadow: 0 8px 24px rgba(220,38,38,0.28);
+  }
+  .example-email-btn:hover {
+    background: #b91c1c; border-color: #b91c1c;
+    box-shadow: 0 10px 28px rgba(220,38,38,0.38);
+    transform: translateY(-1px);
+  }
 
   .email-modal {
     display: none; position: fixed; inset: 0; z-index: 1000;
