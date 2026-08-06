@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PeptideEmails — 7-Figure Email Flows the FDA Won't Question</title>
+<title>PeptideEmails — 8-Figure Email Flows the FDA Won't Question</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -54,10 +54,10 @@
   .nav-links a:hover { color: var(--text); }
   .nav-cta {
     font-size: 0.85rem; font-weight: 700; padding: 0.75rem 1.75rem;
-    background: var(--dark); color: #fff; text-decoration: none;
-    border: 2px solid var(--dark); transition: all 0.2s;
+    background: var(--accent-green); color: var(--dark); text-decoration: none;
+    border: 2px solid var(--accent-green); transition: all 0.2s;
   }
-  .nav-cta:hover { background: var(--accent-green); border-color: var(--accent-green); }
+  .nav-cta:hover { background: #1aad4f; border-color: #1aad4f; }
 
   /* ---- HERO ---- */
   .hero {
@@ -270,6 +270,42 @@
     font-weight: 800;
   }
 
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    margin-top: 3.5rem; border: 1px solid rgba(255,255,255,0.12);
+  }
+  .about-card {
+    padding: 2.5rem; border: 1px solid rgba(255,255,255,0.12);
+  }
+  .about-card:hover { background: rgba(255,255,255,0.03); }
+  .about-card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent-green); margin-bottom: 1.1rem;
+  }
+  .about-card h3 {
+    font-size: 1.25rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.7rem; color: #fff;
+  }
+  .about-card p {
+    font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.6; font-weight: 500;
+  }
+
+  .platform-warning {
+    margin-top: 2.5rem; padding: 2rem 2.25rem;
+    border-left: 4px solid var(--accent-red);
+    background: var(--accent-red-bg);
+  }
+  .platform-warning-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent-red); margin-bottom: 0.85rem;
+  }
+  .platform-warning p {
+    font-size: 1.05rem; line-height: 1.65; color: var(--text-mid); font-weight: 500;
+    max-width: 760px;
+  }
+  .platform-warning strong { color: var(--text); font-weight: 800; }
+
   .comp-grid {
     display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
     margin-top: 3rem; border: 2px solid var(--dark);
@@ -332,7 +368,7 @@
     .hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 3rem; gap: 2rem; }
     .hero-stats { padding-left: 0; border-left: none; border-top: 3px solid var(--border);
       padding-top: 2rem; flex-direction: row; flex-wrap: wrap; gap: 2rem; }
-    .problem-grid, .audience-grid, .flow-grid { grid-template-columns: 1fr; }
+    .problem-grid, .audience-grid, .flow-grid, .about-grid { grid-template-columns: 1fr; }
     .comp-grid { grid-template-columns: 1fr; }
     .comp-card { border-right: none !important; border-bottom: 2px solid var(--dark) !important; }
     .comp-card:last-child { border-bottom: none !important; }
@@ -346,6 +382,30 @@
     .flow-item { grid-template-columns: 2.5rem 1fr; }
     .flow-tag { display: none; }
   }
+
+  .example-email-btn { margin-top: 2.5rem; }
+
+  .email-modal {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+    overflow-y: auto; padding: 2rem;
+    justify-content: center; align-items: flex-start;
+  }
+  .email-modal.active { display: flex; }
+  .email-modal-inner {
+    position: relative; max-width: 500px; width: 100%; margin: 2rem auto;
+  }
+  .email-modal-inner img {
+    width: 100%; border-radius: 4px; display: block;
+  }
+  .email-modal-close {
+    position: fixed; top: 1.5rem; right: 1.5rem;
+    width: 3rem; height: 3rem; border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(0,0,0,0.6); color: #fff; font-size: 1.5rem;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    z-index: 1001; transition: all 0.2s;
+  }
+  .email-modal-close:hover { background: #fff; color: #000; border-color: #fff; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -366,8 +426,9 @@
   <div class="nav-links">
     <a href="#problem">Problem</a>
     <a href="#how">Process</a>
+    <a href="#about">About</a>
     <a href="#who">Clients</a>
-    <a href="#cta" class="nav-cta">Schedule Consultation</a>
+    <a href="https://api.leadconnectorhq.com/widget/booking/kr41Zw1TjlYl3qhCScnu" class="nav-cta">Schedule Consultation</a>
   </div>
 </nav>
 
@@ -376,12 +437,12 @@
     <div class="hero-eyebrow">
       <span class="line"></span> For Peptide & GLP-1 Brands
     </div>
-    <h1>7-Figure Email Flows the FDA Won't Question. <span class="green">&rarr;</span></h1>
+    <h1>8-Figure Email Flows the FDA Won't Question. <span class="green">&rarr;</span></h1>
     <p class="hero-sub">
       Thousands of website visits generating nothing. Customers who bought once and forgot you exist. One bad subject line could trigger a warning letter. <strong>We build compliant, done-for-you email systems</strong> that turn your list into predictable revenue &mdash; with no additional ad spend.
     </p>
     <div class="hero-ctas">
-      <a href="#cta" class="btn-dark">See If You Qualify <span class="arrow">&rarr;</span></a>
+      <a href="https://api.leadconnectorhq.com/widget/booking/kr41Zw1TjlYl3qhCScnu" class="btn-dark">See If You Qualify <span class="arrow">&rarr;</span></a>
       <a href="#how" class="btn-outline">See How It Works</a>
     </div>
     <div class="qualifier">
@@ -430,7 +491,7 @@
 
 <section class="dark-section" id="problem">
   <div class="dark-inner">
-    <div class="manifesto">You could make a lot more money for your business through email marketing if you don't cut corners or cross the FDA. Email drives enormous revenue for peptide brands and when you <span style="color: var(--accent-green);">lean into compliant language</span> &mdash; it supercharges your business. Most peptide brands either do nothing out of fear or get greedy and market claims that lead to regulator crackdown.</div>
+    <div class="manifesto">You could make a lot more money for your peptide business with better email marketing. Emails that don't cut corners or cross the FDA. When you <span style="color: var(--accent-green);">lean into compliant email marketing language</span> &mdash; it supercharges your top line. Most peptide brands either do nothing out of fear OR get greedy and market claims that lead to regulator crackdown.</div>
     <div class="manifesto-sub">We write the emails your customers actually open &mdash; compliant copy wrapped in design that looks like it belongs in their feed, driving conversions.</div>
     <div class="section-label" style="margin-top: 4rem;">The Problem</div>
     <div class="problem-grid">
@@ -462,7 +523,7 @@
   <div class="big-callout-inner">
     <div class="big-num">35%</div>
     <div class="big-label">Of E-Commerce Revenue Is Attributed To Email</div>
-    <a href="#cta" class="btn-dark">Schedule Consultation <span class="arrow">&rarr;</span></a>
+    <a href="https://api.leadconnectorhq.com/widget/booking/kr41Zw1TjlYl3qhCScnu" class="btn-dark">Schedule Consultation <span class="arrow">&rarr;</span></a>
   </div>
 </div>
 
@@ -502,6 +563,33 @@
         <span class="flow-num">06</span>
         <span class="flow-name">Weekly Campaigns & Promos</span>
         <span class="flow-tag revenue">REVENUE</span>
+      </div>
+    </div>
+    <a href="#" class="btn-dark example-email-btn" onclick="document.getElementById('emailModal').classList.add('active');document.body.style.overflow='hidden';return false;">Example Tirzepatide Education Email <span class="arrow">&rarr;</span></a>
+  </div>
+</section>
+
+<section class="dark-section" id="about">
+  <div class="dark-inner">
+    <div class="section-label">Who We Are</div>
+    <h2>We come from e-commerce.<br>We know regulated markets.</h2>
+    <p class="section-text" style="color: rgba(255,255,255,0.7); max-width: 640px; margin-bottom: 2rem;">
+      Our background is <strong style="color:#fff;">e-commerce and info products</strong> &mdash; the businesses where email <em>is</em> the P&amp;L. We&rsquo;ve spent years in highly regulated categories, scaling brands that have to ride the right side of the line while pushing to higher and higher volumes of sales. We know exactly how far you can lean in before a claim becomes a liability &mdash; and how to keep converting on the compliant side of it.
+    </p>
+    <p class="section-text" style="color: rgba(255,255,255,0.7); max-width: 640px;">
+      That experience is the whole point. Anyone can send a promo. Growing revenue in a market regulators are actively watching &mdash; without triggering a shutdown &mdash; is a different skill set. It&rsquo;s the one we&rsquo;ve built.
+    </p>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-card-tag">Your Data, Backed Up</div>
+        <h3>We back up every email we capture.</h3>
+        <p>Every subscriber and contact we help you collect is backed up and yours &mdash; not locked inside a platform that can freeze you out overnight. If a provider pulls the plug, your list survives.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-tag">Own Your Infrastructure</div>
+        <h3>Self-hosted SMTP &amp; FluentCRM, if you need it.</h3>
+        <p>When a brand outgrows the risk of third-party ESPs, we can stand up self-hosted sending infrastructure &mdash; your own SMTP and FluentCRM databases &mdash; so you control the sending, the data, and the deliverability end to end.</p>
       </div>
     </div>
   </div>
@@ -546,10 +634,15 @@
     <div class="section-label">Infrastructure</div>
     <h2>Built for brands other<br>agencies won't touch.</h2>
 
+    <div class="platform-warning">
+      <div class="platform-warning-tag">Platform Reality Check</div>
+      <p><strong>Klaviyo and Omnisend will ban your account.</strong> Omnisend is fine for cannabis &mdash; it is <em>not</em> built for peptides, and neither is Klaviyo. Both will freeze or terminate peptide senders without warning, taking your list with them. At <strong>PeptideEmails.com we specialize in one thing only: peptide email marketing</strong> &mdash; the platforms, infrastructure, and compliant copy that actually survive in this category.</p>
+    </div>
+
     <div class="comp-grid">
       <div class="comp-card">
         <h3>Sendlane Only</h3>
-        <p>Built for high-risk e-commerce. Klaviyo will shut you down.</p>
+        <p>Purpose-built for high-risk e-commerce &mdash; the platform that keeps peptide senders live.</p>
       </div>
       <div class="comp-card">
         <h3>Isolated Subdomains</h3>
@@ -579,12 +672,19 @@
   <div class="section-label">Get Started</div>
   <h2>Your list is either making<br>you money or it isn't.</h2>
   <p>15-minute discovery call. We'll show you where revenue is leaking and tell you if we're a fit.</p>
-  <a href="https://calendly.com" class="btn-green">Schedule My Free Consultation <span class="arrow">&rarr;</span></a>
+  <a href="https://api.leadconnectorhq.com/widget/booking/kr41Zw1TjlYl3qhCScnu" class="btn-green">Schedule My Free Consultation <span class="arrow">&rarr;</span></a>
 </section>
 
 <footer>
   PeptideEmails.com &mdash; All email systems built within FDA compliance guidelines.
 </footer>
+
+<div id="emailModal" class="email-modal" onclick="if(event.target===this){this.classList.remove('active');document.body.style.overflow=''}">
+  <button class="email-modal-close" onclick="document.getElementById('emailModal').classList.remove('active');document.body.style.overflow=''">&times;</button>
+  <div class="email-modal-inner">
+    <img src="tirzepatide-email.png" alt="Example Tirzepatide Education Email">
+  </div>
+</div>
 
 </body>
 </html>
