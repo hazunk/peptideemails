@@ -8,3 +8,7 @@
 .env.*
 *.local
 seo/tools/downloads/
+
+# Blog lives in its own repo (hazunk/peptideemails-blog); SEO docs travel with it
+peptide-emails/
+seo/

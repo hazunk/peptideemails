@@ -1,9 +1,5 @@
-# NOTE: shared by two Vercel projects that build from this repo:
-#  - static homepage (root dir ".")  — should not serve app source, but this is
-#    a manual CLI deploy so minor; keep secrets/seo/legal out below.
-#  - blog (root dir "peptide-emails/", git-connected) — MUST include peptide-emails/,
-#    so do NOT ignore it here (doing so produces an empty build → 404).
 legal/
+peptide-emails/
 seo/
 node_modules/
 .git/
