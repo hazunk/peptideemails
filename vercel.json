@@ -1,5 +1,11 @@
 {
+  "framework": null,
+  "outputDirectory": ".",
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/blog", "destination": "https://peptide-emails-blog.vercel.app/blog" },
+    { "source": "/blog/:path*", "destination": "https://peptide-emails-blog.vercel.app/blog/:path*" }
+  ],
   "headers": [
     {
       "source": "/(.*)",

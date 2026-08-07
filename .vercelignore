@@ -1,1 +1,13 @@
 legal/
+peptide-emails/
+seo/
+node_modules/
+.git/
+.claude/
+.vercel/
+.env
+.env.*
+*.local
+PowerScale-Media-Email-Services-Agreement.docx
+PowerScale-Media-Email-Services-Agreement.pdf
+.DS_Store

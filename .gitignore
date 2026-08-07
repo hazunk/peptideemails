@@ -2,3 +2,9 @@
 
 # Private legal drafts — do not deploy
 /legal/
+
+# Secrets — never commit
+.env
+.env.*
+*.local
+seo/tools/downloads/
