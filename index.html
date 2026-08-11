@@ -333,6 +333,33 @@
   .comp-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.5rem; }
   .comp-card p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.5; font-weight: 600; }
 
+  .compare { margin-top: 3rem; border: 2px solid var(--dark); }
+  .compare-head, .compare-row {
+    display: grid; grid-template-columns: 1.2fr 1fr 1fr;
+    border-bottom: 2px solid var(--dark);
+  }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-feature {
+    padding: 1.25rem 1.5rem; font-weight: 800; font-size: 0.95rem;
+    display: flex; align-items: center; border-right: 2px solid var(--dark);
+  }
+  .compare-col {
+    padding: 1.25rem 1.5rem; font-weight: 900; font-size: 1.1rem;
+    text-align: center;
+  }
+  .compare-cell {
+    padding: 1.25rem 1.5rem; font-size: 0.92rem; font-weight: 600;
+    color: var(--text-mid); display: flex; align-items: center; gap: 0.5rem;
+  }
+  .compare-col.compare-good, .compare-cell.compare-good { border-left: 2px solid var(--dark); }
+  .compare-bad { background: var(--accent-red-bg); }
+  .compare-good { background: var(--accent-green-bg); }
+  .compare-col.compare-bad { color: var(--accent-red); }
+  .compare-col.compare-good { color: var(--accent-green); }
+  .compare-cell .mark { font-weight: 900; }
+  .compare-cell.compare-bad .mark { color: var(--accent-red); }
+  .compare-cell.compare-good .mark { color: var(--accent-green); }
+
   .big-callout {
     padding: 5rem 3rem; text-align: center;
     border-top: 3px solid var(--dark); border-bottom: 3px solid var(--dark);
@@ -388,6 +415,10 @@
     .comp-grid { grid-template-columns: 1fr; }
     .comp-card { border-right: none !important; border-bottom: 2px solid var(--dark) !important; }
     .comp-card:last-child { border-bottom: none !important; }
+    .compare-feature, .compare-col, .compare-cell { padding: 0.9rem 0.85rem; }
+    .compare-feature { font-size: 0.82rem; }
+    .compare-col { font-size: 0.95rem; }
+    .compare-cell { font-size: 0.82rem; }
     .audience-card { border-right: none; border-bottom: 2px solid var(--dark); }
     .audience-card:last-child { border-bottom: none; }
     nav { padding: 1rem 1.5rem; }
@@ -688,30 +719,31 @@
       <p><strong>Klaviyo will ban your account.</strong> It is <em>not</em> built for peptides &mdash; Klaviyo will freeze or terminate peptide senders without warning, taking your list with them. At <strong>PeptideEmails.com we specialize in one thing only: peptide email marketing</strong> &mdash; the platforms, infrastructure, and compliant copy that actually survive in this category. We build on <strong>Omnisend</strong>, configured for high-risk senders so your list stays protected and your campaigns keep sending.</p>
     </div>
 
-    <div class="comp-grid">
-      <div class="comp-card">
-        <h3>Omnisend</h3>
-        <p>Configured for high-risk e-commerce &mdash; the platform that keeps peptide senders live.</p>
+    <div class="compare">
+      <div class="compare-head">
+        <div class="compare-feature"></div>
+        <div class="compare-col compare-bad">Klaviyo</div>
+        <div class="compare-col compare-good">Omnisend</div>
       </div>
-      <div class="comp-card">
-        <h3>Isolated Subdomains</h3>
-        <p>Dedicated sending domain. Primary domain stays clean.</p>
+      <div class="compare-row">
+        <div class="compare-feature">Peptide senders</div>
+        <div class="compare-cell compare-bad"><span class="mark">&#10005;</span> Banned without warning</div>
+        <div class="compare-cell compare-good"><span class="mark">&#10003;</span> Kept live</div>
       </div>
-      <div class="comp-card">
-        <h3>Full Authentication</h3>
-        <p>SPF, DKIM, DMARC. Non-negotiable for 2026.</p>
+      <div class="compare-row">
+        <div class="compare-feature">High-risk e-commerce</div>
+        <div class="compare-cell compare-bad"><span class="mark">&#10005;</span> Not built for it</div>
+        <div class="compare-cell compare-good"><span class="mark">&#10003;</span> Purpose-configured</div>
       </div>
-      <div class="comp-card">
-        <h3>Compliance Review</h3>
-        <p>Every email passes our FDA framework before it sends.</p>
+      <div class="compare-row">
+        <div class="compare-feature">Your subscriber list</div>
+        <div class="compare-cell compare-bad"><span class="mark">&#10005;</span> Frozen &amp; lost if flagged</div>
+        <div class="compare-cell compare-good"><span class="mark">&#10003;</span> Protected</div>
       </div>
-      <div class="comp-card">
-        <h3>Research-Only Language</h3>
-        <p>No dosage guidance. No consumption testimonials.</p>
-      </div>
-      <div class="comp-card">
-        <h3>Audit-Ready Archive</h3>
-        <p>Full documentation. If regulators knock, you're covered.</p>
+      <div class="compare-row">
+        <div class="compare-feature">Account stability</div>
+        <div class="compare-cell compare-bad"><span class="mark">&#10005;</span> Terminated without notice</div>
+        <div class="compare-cell compare-good"><span class="mark">&#10003;</span> Stays sending</div>
       </div>
     </div>
   </div>
